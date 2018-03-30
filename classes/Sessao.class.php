@@ -1,5 +1,6 @@
 <?php
-class Sessao {
+class Sessao 
+{
 
 	public function __construct()
 	{

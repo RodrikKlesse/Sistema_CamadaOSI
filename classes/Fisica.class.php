@@ -1,5 +1,6 @@
 <?php
-class Fisica {
+class Fisica 
+{
 
 	public function __construct()
 	{

@@ -1,5 +1,6 @@
 <?php
-class Rede {
+class Rede 
+{
 
 	private $ip_address_origem;
 	private $ip_adress_destino;

@@ -1,5 +1,6 @@
 <?php
-class Transporte {
+class Transporte 
+{
 
 	private $porta_destino;
 	

@@ -1,5 +1,6 @@
 <?php
-class Aplicacao {
+class Aplicacao 
+{
 
 	public $dados;
 

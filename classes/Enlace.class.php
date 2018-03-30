@@ -1,5 +1,6 @@
 <?php
-class Enlace {
+class Enlace 
+{
 
 	private $mac_address_origem;
 	private $mac_adress_destino;
