@@ -49,8 +49,8 @@ if(isset($_GET['debug']))
                                           Camada 1 - Física
                                        </div>
                                        <div class="card-body">
-                                       	<br />
-                                       	<br />
+                                       	Adaptadores Ethernet - <br />
+                                       	<?=$dados['adaptadores']?>
                                        </div>
                                     </div>
                                  </div>
@@ -90,12 +90,9 @@ if(isset($_GET['debug']))
                                           Camada 4 - Transporte
                                        </div>
                                        <div class="card-body">
-                                          <div class="alert alert-success">
-                                             Teste
-                                          </div> 
-                                             <br />
-                                          Porta Destino - <?=$dados['porta_destino']?>
-                                       </div>
+                                          <input type="password" class="form-control" maxlength="20" id="campo_sessao" placeholder="Por favor, digite algo para ser armazenado"> <br />
+                                          <button class="btn btn-info" style="color: #FFF;" id="btn_enviar">Armazenar</button>
+                                       </div>                                       
                                     </div>
                                  </div>
 
@@ -105,8 +102,11 @@ if(isset($_GET['debug']))
                                           Camada 5 - Sessão
                                        </div>
                                        <div class="card-body">
-                                          <input type="password" class="form-control" maxlength="20" id="campo_sessao" placeholder="Por favor, digite algo para ser armazenado"> <br />
-                                          <button class="btn btn-info" style="color: #FFF;" id="btn_enviar">Armazenar</button>
+                                          <div class="alert" id="notificadores" style="display: none">
+                                            Mensagem enviada
+                                          </div> 
+                                             <br />
+                                          Porta Destino - <?=$dados['porta_destino']?>
                                        </div>
                                     </div>
                                  </div>
@@ -150,7 +150,7 @@ if(isset($_GET['debug']))
             {
                 var send = {campo_sessao: sessao_input};
 
-                $.get("socorro.php", send, function(data, status)
+                $.get("ajax.php", send, function(data, status)
                 {
                     var dados = JSON.parse(data);
 
@@ -158,9 +158,9 @@ if(isset($_GET['debug']))
                     {
                         $("#texto_criptografado").html(dados.criptografado);
                         $("#texto_descriptografado").html(dados.descriptografado);
-                        mostrar_apresentacao();
+                        show_status(status);
                     } else
-                        esconder_apresentacao();
+                        hide_status();
                     
                     $("#campo_sessao").val('');
                     $("#campo_sessao").focus();
@@ -169,22 +169,36 @@ if(isset($_GET['debug']))
             } else 
             {
                 $("#campo_sessao").focus();
-                esconder_apresentacao();
+                hide_status();
             }
         });
 
-        function esconder_apresentacao()
+        function hide_status()
          {
             $("#conteudo_apresentacao").hide();
             $("#blank_apresentacao").show();
+
+            $("#notificacao").hide();
          }
 
-         function mostrar_apresentacao()
+         function show_status(status)
          {
-            $("#blank_apresentacao").hide();
-            $("#conteudo_apresentacao").show();
-         }
-         
+            if(status == 'success')
+            {
+                $("#blank_apresentacao").hide();
+                $("#conteudo_apresentacao").show();
+
+                $("#notificacao").removeClass("alert-danger");
+                $("#notificacao").addClass("alert-success");
+                $("#notificacao").html("Mensagem armazenada e enviada").show();
+            }
+            else
+            {
+                $("#notificacao").removeClass("alert-success");
+                $("#notificacao").removeClass("alert-danger");
+                $("#notificacao").html("Mensagem armazenada e enviada").show();
+            }            
+         }         
       </script>
    </body>
 </html>
