@@ -1,22 +1,12 @@
-<?php
-require_once "bootstrap.php";
-$aplicacao = new Aplicacao();
-$dados = $aplicacao->get_dados();
-
-if(isset($_GET['debug']))
-{
-    var_dump($dados);
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title> Camadas OSI </title>
+      <title> Modelos TCP/IP e Modelos OSI </title>
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+      <link rel="icon" href="favicon.ico" type="image/x-icon">
       <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
       <link rel="stylesheet" type="text/css" href="assets/css/simple-line-icons.min.css">
       <link rel="stylesheet" type="text/css" href="assets/css/style.min.css">
@@ -28,106 +18,31 @@ if(isset($_GET['debug']))
       </style>
    </head>
    <body class="app pace-done">
-   <div class="app-body" style="margin-top: 30px;">
+      <div class="app-body" style="margin-top: 30px;">
          <main class="main">
             <div class="container-fluid">
                <div class="animated fadeIn">
 
                   <div class="row">
-                     <div class="col-md-12">
+                     <div class="col-md-6">
                         <div class="card">
-                           <div class="card-header" style="background: #de1a1a;">
-                              Camada 7 - Aplicação
+                           <div class="card-header">
+                              Modelo TCP/IP
                            </div>
                            <div class="card-body">
-
-
-                              <div class="row">
-                                 <div class="col-md-4">
-                                    <div class="card">
-                                       <div class="card-header">
-                                          Camada 1 - Física
-                                       </div>
-                                       <div class="card-body">
-                                       	Adaptadores Ethernet - <br />
-                                       	<?=$dados['adaptadores']?>
-                                       </div>
-                                    </div>
-                                 </div>
-
-                                 <div class="col-md-4">
-                                    <div class="card">
-                                       <div class="card-header">
-                                          Camada 2 - Enlace
-                                       </div>
-                                       <div class="card-body">
-                                       		MAC Origem - <?=$dados['mac_origem']?> <br />
-                                       		MAC Destino - <?=$dados['mac_destino']?>
-                                       </div>
-                                    </div>
-                                 </div>
-
-
-                                 <div class="col-md-4">
-                                    <div class="card">
-                                       <div class="card-header">
-                                          Camada 3 - Rede
-                                       </div>
-                                       <div class="card-body">
-                                       		IP Origem - <?=$dados['ip_origem']?> <br />
-                                       		IP Destino - <?=$dados['ip_destino']?>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-
-                              <div class="row">
-
-
-                                 <div class="col-md-4">
-                                    <div class="card">
-                                       <div class="card-header">
-                                          Camada 4 - Transporte
-                                       </div>
-                                       <div class="card-body">
-                                          <input type="password" class="form-control" maxlength="20" id="campo_sessao" placeholder="Por favor, digite algo para ser armazenado"> <br />
-                                          <button class="btn btn-info" style="color: #FFF;" id="btn_enviar">Armazenar</button>
-                                       </div>                                       
-                                    </div>
-                                 </div>
-
-                                <div class="col-md-4">
-                                    <div class="card">
-                                       <div class="card-header">
-                                          Camada 5 - Sessão
-                                       </div>
-                                       <div class="card-body">
-                                          <div class="alert" id="notificadores" style="display: none">
-                                            Mensagem enviada
-                                          </div> 
-                                             <br />
-                                          Porta Destino - <?=$dados['porta_destino']?>
-                                       </div>
-                                    </div>
-                                 </div>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                       <div class="card-header">
-                                          Camada 6 - Apresentação
-                                       </div>
-                                       <div class="card-body">
-                                          <div id="conteudo_apresentacao" style="display: none;">
-                                             Dados Criptografado - <span id="texto_criptografado"></span> <br />
-                                             Dados Descriptografado - <span id="texto_descriptografado"></span>
-                                          </div>
-                                          <div id="blank_apresentacao">
-                                             Digite o valor no campo ao lado para criptografar nessa sessão. 
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-
-                              </div>
+                              <p>O TCP/IP é uma sequência de protocolos (Transmission Control Protocol/Internet Protocol - Protocolo de controle de transmissão/Protocolo da Internet). Essa denominação vem dos nomes de dois protocolos essenciais da sequência de protocolos, o TCP e o IP. </p>
+                              <a href="tcp/" class="btn btn-success" style="color: #FFF;">Acessar Modelo TCP/IP</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="card">
+                           <div class="card-header">
+                              Modelo OSI
+                           </div>
+                           <div class="card-body">
+                              <p> O Modelo OSI é uma arquitetura modelo que divide as redes de computadores em 7 camadas para obter camadas de abstração. Cada protocolo realiza a inserção de uma funcionalidade assinalada a uma camada específica.</p>
+                              <a href="osi/" class="btn btn-success" style="color: #FFF;">Acessar Modelo OSI</a>
                            </div>
                         </div>
                      </div>
@@ -141,64 +56,5 @@ if(isset($_GET['debug']))
       <script type="text/javascript" src="assets/js/popper.min.js"></script>
       <script type="text/javascript" src="assets/js/pace.min.js"></script>
       <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-      <script type="text/javascript">
-        $("btn_enviar").click(function()
-        {
-            var sessao_input = $("#campo_sessao").val();
-
-            if(sessao_input != '')
-            {
-                var send = {campo_sessao: sessao_input};
-
-                $.get("ajax.php", send, function(data, status)
-                {
-                    var dados = JSON.parse(data);
-
-                    if(data)
-                    {
-                        $("#texto_criptografado").html(dados.criptografado);
-                        $("#texto_descriptografado").html(dados.descriptografado);
-                        show_status(status);
-                    } else
-                        hide_status();
-                    
-                    $("#campo_sessao").val('');
-                    $("#campo_sessao").focus();
-                    
-                });
-            } else 
-            {
-                $("#campo_sessao").focus();
-                hide_status();
-            }
-        });
-
-        function hide_status()
-         {
-            $("#conteudo_apresentacao").hide();
-            $("#blank_apresentacao").show();
-
-            $("#notificacao").hide();
-         }
-
-         function show_status(status)
-         {
-            if(status == 'success')
-            {
-                $("#blank_apresentacao").hide();
-                $("#conteudo_apresentacao").show();
-
-                $("#notificacao").removeClass("alert-danger");
-                $("#notificacao").addClass("alert-success");
-                $("#notificacao").html("Mensagem armazenada e enviada").show();
-            }
-            else
-            {
-                $("#notificacao").removeClass("alert-success");
-                $("#notificacao").removeClass("alert-danger");
-                $("#notificacao").html("Mensagem armazenada e enviada").show();
-            }            
-         }         
-      </script>
    </body>
 </html>

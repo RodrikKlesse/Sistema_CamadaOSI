@@ -9,9 +9,6 @@ ini_set('date.timezone',  'America/Sao_Paulo');
 // Level de erros
 ini_set('display_errors', 'On');
 
-// Define o root do sistema
-define('ROOT', 'http://localhost/rede/');
-
 define('RAIZ_APP', dirname(__FILE__));
 define('LIB', RAIZ_APP . '/classes');
 
